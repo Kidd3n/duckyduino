@@ -42,7 +42,7 @@ dfu() {
 }
 
 lenguage () {
-    echo -ne "$yellowColour[?]$grayColour Language: \n\n[1] Español\n[2] English\n$blueColour\n[>]: $grayColour" && read len
+    echo -ne "$yellowColour\n[?]$grayColour Language: \n\n[1] Español\n[2] English\n$blueColour\n[>]:$grayColour" && read len
     case $len in
     1)
     mainesp
@@ -51,7 +51,7 @@ lenguage () {
     maineng
     ;;
     *)
-    echo -e "${redColour}\n[!]$grayColour Invalid Option"; sleep 2
+    echo -e "${redColour}\n[!]$grayColour Invalid Option"; sleep 2; lenguage
     ;;
     esac
    
