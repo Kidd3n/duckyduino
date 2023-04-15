@@ -9,6 +9,37 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 pathmain=$(pwd)
+test -f /etc/debian_version
+debian=$(echo $?)
+test -f /etc/arch-release
+arch=$(echo $?)
+test -f /etc/redhat-release
+fedora=$(echo $?)
+
+trap ctrl_c INT
+
+ctrl_c() {
+	echo -e "\n\n${redColour}[!]${endColour}${grayColour} Exit...${endColour}\n"; exit
+}
+
+dfu() {
+    test -f /usr/bin/dfu-programmer
+    if [ "$(echo $?)" -ne 0 ]; then 
+        echo -ne "$redColour\n[!]$grayColour You are missing a dependency (dfu-programmer) Enter to install" && read 
+        if [ "$debian" -eq 0 ]; then
+            sudo apt-get install dfu-programmer -y
+        elif [ "$arch" -eq 0 ]; then
+            sudo pacman -S dfu-programmer -y
+        elif [ "$fedora" -eq 0 ]; then
+            sudo dnf install dfu-programmer -y
+        else
+            echo -ne "$redColour\n[!]$grayColour Could not install, try installing it manually" && read
+            exit
+        fi
+    else
+        lenguage
+    fi
+}
 
 lenguage () {
     echo -ne "$yellowColour[?]$grayColour Language: \n\n[1] Español\n[2] English\n$blueColour\n[>]: $grayColour" && read len
@@ -67,3 +98,5 @@ maineng() {
     keyfirm
     echo -ne "\nYour ARDUINO is ready\n"
 }
+
+dfu
