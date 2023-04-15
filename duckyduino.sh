@@ -81,6 +81,7 @@ mainesp() {
     echo -ne "\nSubiendo el firmware del teclado\n" && read
     keyfirm
     echo -ne "\nTu ARDUINO esta preparado!\n"
+    tput cnorm
 }
 
 maineng() {
@@ -97,6 +98,7 @@ maineng() {
     echo -ne "\nWriting Keyboard Firmware\n" && read
     keyfirm
     echo -ne "\nYour ARDUINO is ready\n"
+    tput cnorm
 }
 
 dfu
