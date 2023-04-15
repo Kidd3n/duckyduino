@@ -11,7 +11,7 @@ grayColour="\e[0;37m\033[1m"
 pathmain=$(pwd)
 
 lenguage () {
-    echo -ne "$yellowColour[?]$grayColour Language: \n[1] esp\n[2]eng\n$blueColour[>]: $grayColour" && read len
+    echo -ne "$yellowColour[?]$grayColour Language: \n\n[1] Español\n[2] English\n$blueColour\n[>]: $grayColour" && read len
     case $len in
     1)
     mainesp
@@ -37,6 +37,7 @@ keyfirm() {
 }
 
 mainesp() {
+    tput civis
     echo -ne "\nConecta el ARDUINO UNO a tu PC con los dos pines conectados" && read
     echo -ne "\nRetire el puente que conecta los pines" && read
     echo -ne "\nRestableciendo el firmware por defecto del ARDUINO...\n"
@@ -52,6 +53,7 @@ mainesp() {
 }
 
 maineng() {
+    tput civis
     echo -ne "\nPlug ARDUINO UNO into your PC with the two pins connected" && read 
     echo -ne "\nRemove the jumper that connect pins." && read
     echo -ne "\nReseting ARDUINO to default firmware...\n" && read
