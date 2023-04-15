@@ -6,7 +6,7 @@ puedes inyectar este codigo: https://github.com/BlackShell256/powershell-reverse
 
 ❗ Esta bajo tu responsabilidad el uso que le puedas dar.
 
-## 📥 Installation and execution
+## 📥 Instalacion y ejecucion
 
 ```
 git clone https://github.com/Kidd3n/duckyduino.git
